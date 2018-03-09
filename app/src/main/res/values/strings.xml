@@ -4,4 +4,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_welcome">WelcomeActivity</string>
+
+
+    <string name="btn_goto_main_page">进入主页面</string>
 </resources>

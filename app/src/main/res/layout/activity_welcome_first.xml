@@ -7,14 +7,14 @@
     tools:background="#ff218AB8">
 
     <TextView
-        android:id="@+id/android_spin"
+        android:id="@+id/welcome_title1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="80dp"
         android:textSize="30dp"
-        android:text="Welcome Page 2" />
+        android:text="Welcome Page 1" />
 
 
 </com.redbooth.WelcomePageLayout>
