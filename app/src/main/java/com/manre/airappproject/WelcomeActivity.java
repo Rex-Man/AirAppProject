@@ -64,8 +64,7 @@ public class WelcomeActivity extends AppCompatActivity {
     void GoToMainPage(View v){
         Toast toast = Toast.makeText(getApplicationContext(),"你点击了1次", Toast.LENGTH_LONG);//提示被点击了
         toast.show();
-        Intent intent=new Intent(WelcomeActivity.this,MainActivity.class);
-        startActivity(intent);
+        skipActivity(0);
     }
 
     private void skipActivity(int min) {
