@@ -16,6 +16,7 @@ public class GlideImageLoader extends ImageLoader {
     @Override
     public void displayImage(Context context, Object path, ImageView imageView) {
 
-        Picasso.get().load(String.valueOf(path)).into(imageView);
+        Integer dd=Integer.valueOf(path.toString());
+        Picasso.get().load(dd.intValue()).into(imageView);
     }
 }

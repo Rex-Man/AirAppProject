@@ -4,10 +4,12 @@ package com.manre.airappproject.fragment.home;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TableLayout;
 
 import com.manre.airappproject.R;
 import com.manre.airappproject.common.GlideImageLoader;
@@ -24,6 +26,7 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     Banner banner;
+    TabLayout mHomeSearchConditionTab;
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -36,10 +39,15 @@ public class HomeFragment extends Fragment {
 
         View homeView=inflater.inflate(R.layout.fragment_home, container, false);
         banner =homeView.findViewById(R.id.home_advertisement_banner);
+        mHomeSearchConditionTab=homeView.findViewById(R.id.home_search_condition_tab);
         initPicture();
+        initSearchTab();
         return homeView;
     }
 
+    /*
+     * 广告部分的实现
+    */
 
     private List<Integer> getImages()
     {
@@ -51,34 +59,34 @@ public class HomeFragment extends Fragment {
         return images;
     }
 
-    private List<String> getTitle()
-    {
-        List<String> titles= new ArrayList<>();
-        titles.add("广告1");
-        titles.add("广告2");
-        titles.add("广告3");
-        return titles;
-    }
-
     private void initPicture()
     {
         //设置banner样式
-        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR_TITLE);
+        banner.setBannerStyle(BannerConfig.CIRCLE_INDICATOR);
         //设置图片加载器
         banner.setImageLoader(new GlideImageLoader());
         //设置图片集合
         banner.setImages(getImages());
         //设置banner动画效果
         banner.setBannerAnimation(Transformer.DepthPage);
-        //设置标题集合（当banner样式有显示title时）
-        banner.setBannerTitles(getTitle());
         //设置自动轮播，默认为true
         banner.isAutoPlay(true);
         //设置轮播时间
-        banner.setDelayTime(1500);
+        banner.setDelayTime(3000);
         //设置指示器位置（当banner模式中有指示器时）
         banner.setIndicatorGravity(BannerConfig.CENTER);
+        banner.start();
     }
+
+    /**
+     *  查询机票tab 的实现
+     */
+    private void initSearchTab()
+    {
+        mHomeSearchConditionTab.addTab(mHomeSearchConditionTab.newTab().setText(R.string.tab_home_search_one_way));
+        mHomeSearchConditionTab.addTab(mHomeSearchConditionTab.newTab().setText(R.string.tab_home_search_round_trip));
+    }
+
 
     @Override
     public void onStart() {

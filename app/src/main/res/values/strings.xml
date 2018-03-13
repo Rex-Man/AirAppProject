@@ -9,6 +9,10 @@
 
     <string name="btn_goto_main_page">进入主页面</string>
 
+
+    <string name="tab_home_search_round_trip">往返</string>
+    <string name="tab_home_search_one_way">单程</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
