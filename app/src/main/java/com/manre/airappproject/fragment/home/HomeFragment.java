@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import com.manre.airappproject.R;
 import com.manre.airappproject.common.GlideImageLoader;
+import com.manre.airappproject.fragment.BaseFragment;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -26,10 +27,16 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeFragment extends Fragment {
+public class HomeFragment extends BaseFragment {
 
     Banner banner;
     TabLayout mHomeSearchConditionTab;
+    BaseFragment currentFragment;
+
+    private Fragment homeTabOneWayFragment,homeTabRoundTripFragment;
+    private FragmentManager homeSearchManager;
+
+
     public HomeFragment() {
         // Required empty public constructor
     }
@@ -86,8 +93,7 @@ public class HomeFragment extends Fragment {
      */
     private void initSearchTab()
     {
-        mHomeSearchConditionTab.addTab(mHomeSearchConditionTab.newTab().setText(R.string.tab_home_search_one_way));
-        mHomeSearchConditionTab.addTab(mHomeSearchConditionTab.newTab().setText(R.string.tab_home_search_round_trip));
+
         mHomeSearchConditionTab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -95,10 +101,12 @@ public class HomeFragment extends Fragment {
                 switch (tab.getPosition())
                 {
                     case 0:
+                        currentFragment=addFragment(new HomeTabOneWayFragment(),"TabOneWay",R.id.home_search_condition_tab_form,currentFragment);
                         Toast toast = Toast.makeText(getActivity(),"你点击了tab1", Toast.LENGTH_SHORT);//提示被点击了
                         toast.show();
                         break;
                     case 1:
+                        currentFragment=addFragment(new HomeTabRoundTripFragment(),"TabRoundTrip",R.id.home_search_condition_tab_form,currentFragment);
                         Toast toast1 = Toast.makeText(getActivity(),"你点击了tab2", Toast.LENGTH_SHORT);//提示被点击了
                         toast1.show();
                         break;
@@ -117,43 +125,18 @@ public class HomeFragment extends Fragment {
 
             }
         });
+        mHomeSearchConditionTab.addTab(mHomeSearchConditionTab.newTab().setText(R.string.tab_home_search_one_way),true);
+        mHomeSearchConditionTab.addTab(mHomeSearchConditionTab.newTab().setText(R.string.tab_home_search_round_trip));
+
     }
-//    public void add(Fragment fragment, int id,String tag){
-//        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
-//        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-//        //优先检查，fragment是否存在，避免重叠
-//        BaseLibFragment tempFragment = (Fragment)fragmentManager.findFragmentByTag(tag);
-//        if(EmptyUtils.isNotEmpty(tempFragment)){
-//            fragment = tempFragment;
-//        }
-//        if(fragment.isAdded()){
-//            addOrShowFragment(fragmentTransaction,fragment,id,tag);
-//        }else{
-//            if(currentFragment!=null&&currentFragment.isAdded()){
-//                fragmentTransaction.hide(currentFragment).add(id, fragment,tag).commit();
-//            }else{
-//                fragmentTransaction.add(id, fragment,tag).commit();
-//            }
-//            currentFragment = fragment;
-//        }
-//    }
-//    /**
-//     * 添加或者显示 fragment
-//     *
-//     * @param fragment
-//     */
-//    private void addOrShowFragment(FragmentTransaction transaction, BaseLibFragment fragment, int id,String tag) {
-//        if(currentFragment == fragment)
-//            return;
-//        if (!fragment.isAdded()) { // 如果当前fragment未被添加，则添加到Fragment管理器中
-//            transaction.hide(currentFragment).add(id, fragment,tag).commit();
-//        } else {
-//            transaction.hide(currentFragment).show(fragment).commit();
-//        }
-//        currentFragment.setUserVisibleHint(false);
-//        currentFragment =  fragment;
-//        currentFragment.setUserVisibleHint(true);
-//    }
+
+
+
+
+
+
+
+
 
     @Override
     public void onStart() {

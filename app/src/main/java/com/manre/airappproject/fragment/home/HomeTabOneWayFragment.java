@@ -8,11 +8,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.manre.airappproject.R;
+import com.manre.airappproject.fragment.BaseFragment;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class HomeTabOneWayFragment extends Fragment {
+public class HomeTabOneWayFragment extends BaseFragment {
 
 
     public HomeTabOneWayFragment() {
