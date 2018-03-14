@@ -130,14 +130,6 @@ public class HomeFragment extends BaseFragment {
 
     }
 
-
-
-
-
-
-
-
-
     @Override
     public void onStart() {
         super.onStart();
