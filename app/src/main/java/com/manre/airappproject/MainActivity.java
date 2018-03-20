@@ -62,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationViewHelper.disableShiftMode(navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
+        viewPager.setOffscreenPageLimit(5);//这是个坑来的，如果不设置，默认是3
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {

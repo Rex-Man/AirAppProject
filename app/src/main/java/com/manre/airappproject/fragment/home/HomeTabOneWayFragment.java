@@ -28,4 +28,19 @@ public class HomeTabOneWayFragment extends BaseFragment {
         return inflater.inflate(R.layout.fragment_home_tab_one_way, container, false);
     }
 
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+    @Override
+    public void onStop() {
+        super.onStop();
+
+    }
 }

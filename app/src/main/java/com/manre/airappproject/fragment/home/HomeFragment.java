@@ -101,12 +101,14 @@ public class HomeFragment extends BaseFragment {
                 switch (tab.getPosition())
                 {
                     case 0:
-                        currentFragment=addFragment(new HomeTabOneWayFragment(),"TabOneWay",R.id.home_search_condition_tab_form,currentFragment);
+                        //currentFragment=addFragment(new HomeTabOneWayFragment(),"TabOneWay",R.id.home_search_condition_tab_form,currentFragment);
+                        addFragmentSearch("TabOneWay");
                         Toast toast = Toast.makeText(getActivity(),"你点击了tab1", Toast.LENGTH_SHORT);//提示被点击了
                         toast.show();
                         break;
                     case 1:
-                        currentFragment=addFragment(new HomeTabRoundTripFragment(),"TabRoundTrip",R.id.home_search_condition_tab_form,currentFragment);
+                        //currentFragment=addFragment(new HomeTabRoundTripFragment(),"TabRoundTrip",R.id.home_search_condition_tab_form,currentFragment);
+                        addFragmentSearch("TabRoundTrip");
                         Toast toast1 = Toast.makeText(getActivity(),"你点击了tab2", Toast.LENGTH_SHORT);//提示被点击了
                         toast1.show();
                         break;
@@ -125,10 +127,16 @@ public class HomeFragment extends BaseFragment {
 
             }
         });
-        mHomeSearchConditionTab.addTab(mHomeSearchConditionTab.newTab().setText(R.string.tab_home_search_one_way),true);
-        mHomeSearchConditionTab.addTab(mHomeSearchConditionTab.newTab().setText(R.string.tab_home_search_round_trip));
+        if(mHomeSearchConditionTab.getTabAt(0)==null) {
+            mHomeSearchConditionTab.addTab(mHomeSearchConditionTab.newTab().setText(R.string.tab_home_search_one_way), true);
+        }
+        if(mHomeSearchConditionTab.getTabAt(1)==null) {
+            mHomeSearchConditionTab.addTab(mHomeSearchConditionTab.newTab().setText(R.string.tab_home_search_round_trip));
+        }
 
     }
+
+
 
     @Override
     public void onStart() {
@@ -142,5 +150,46 @@ public class HomeFragment extends BaseFragment {
         super.onStop();
         //结束轮播
         banner.stopAutoPlay();
+
+
+    }
+
+
+
+
+    private void addFragmentSearch(String fTag) {
+        FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        //判断这个标签是否存在Fragment对象,如果存在则返回，不存在返回null
+        BaseFragment fragment = (BaseFragment) fragmentManager.findFragmentByTag(fTag);
+        // 如果这个fragment不存于栈中
+        if (fragment == null) {
+            //根据RaioButton点击的Button传入的tag，实例化，添加显示不同的Fragment
+            if (fTag.equals("TabOneWay")) {
+                fragment = new HomeTabOneWayFragment();
+            } else if (fTag.equals("TabRoundTrip")) {
+                fragment = new HomeTabRoundTripFragment();
+            }
+            //在添加之前先将上一个Fragment隐藏掉
+            if (currentFragment != null) {
+                //fragmentTransaction.remove(currentFragment);
+                fragmentTransaction.hide(currentFragment);
+            }
+            fragmentTransaction.add(R.id.home_search_condition_tab_form, fragment, fTag);
+            fragmentTransaction.commit();
+            //更新可见
+            currentFragment = fragment;
+        } else {
+            //如果添加的Fragment已经存在，则将隐藏掉的Fragment再次显示,其余当前
+            fragmentTransaction.hide(currentFragment);
+            fragmentTransaction.show(fragment);
+            fragmentTransaction.commit();
+            //更新可见
+            currentFragment = fragment;
+
+
+        }
+
+
     }
 }
