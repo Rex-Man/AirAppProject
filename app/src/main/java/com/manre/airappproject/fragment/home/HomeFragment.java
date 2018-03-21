@@ -8,9 +8,12 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.GridLayout;
 import android.widget.TableLayout;
 import android.widget.Toast;
 
@@ -32,6 +35,7 @@ public class HomeFragment extends BaseFragment {
     Banner banner;
     TabLayout mHomeSearchConditionTab;
     BaseFragment currentFragment;
+    RecyclerView mRecyclerView;
 
     private Fragment homeTabOneWayFragment,homeTabRoundTripFragment;
     private FragmentManager homeSearchManager;
@@ -50,8 +54,10 @@ public class HomeFragment extends BaseFragment {
         View homeView=inflater.inflate(R.layout.fragment_home, container, false);
         banner =homeView.findViewById(R.id.home_advertisement_banner);
         mHomeSearchConditionTab=homeView.findViewById(R.id.home_search_condition_tab);
+        mRecyclerView=homeView.findViewById(R.id.home_list_button);
         initPicture();
         initSearchTab();
+        initEasyButton();
         return homeView;
     }
 
@@ -136,6 +142,17 @@ public class HomeFragment extends BaseFragment {
 
     }
 
+    /**
+     *  初始化基本功能button
+     */
+    private void initEasyButton()
+    {
+        GridLayoutManager layoutManage = new GridLayoutManager(getContext(), 4);
+        mRecyclerView.setLayoutManager(layoutManage);
+
+
+
+    }
 
 
     @Override
@@ -153,9 +170,6 @@ public class HomeFragment extends BaseFragment {
 
 
     }
-
-
-
 
     private void addFragmentSearch(String fTag) {
         FragmentManager fragmentManager = getActivity().getSupportFragmentManager();
