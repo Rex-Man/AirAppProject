@@ -18,6 +18,7 @@ import android.widget.TableLayout;
 import android.widget.Toast;
 
 import com.manre.airappproject.R;
+import com.manre.airappproject.adapter.easybutton.EasyButtonAdapter;
 import com.manre.airappproject.common.GlideImageLoader;
 import com.manre.airappproject.fragment.BaseFragment;
 import com.youth.banner.Banner;
@@ -149,11 +150,24 @@ public class HomeFragment extends BaseFragment {
     {
         GridLayoutManager layoutManage = new GridLayoutManager(getContext(), 4);
         mRecyclerView.setLayoutManager(layoutManage);
-
-
+        EasyButtonAdapter mEasyButtonAdapter=new EasyButtonAdapter(getContext(),getData(),R.layout.item_fragment_home_easybutton);
+        mRecyclerView.setAdapter(mEasyButtonAdapter);
 
     }
+    private List<Integer> getData()
+    {
+        List<Integer> easyDataList= new ArrayList<Integer>();
 
+            easyDataList.add(R.drawable.changeticket);
+            easyDataList.add(R.drawable.choosesit);
+            easyDataList.add(R.drawable.changeticket);
+            easyDataList.add(R.drawable.choosesit);
+            easyDataList.add(R.drawable.changeticket);
+            easyDataList.add(R.drawable.choosesit);
+            easyDataList.add(R.drawable.changeticket);
+            easyDataList.add(R.drawable.choosesit);
+        return easyDataList;
+    }
 
     @Override
     public void onStart() {

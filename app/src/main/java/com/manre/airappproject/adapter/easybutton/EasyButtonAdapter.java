@@ -5,7 +5,9 @@ import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
+import com.manre.airappproject.R;
 import com.manre.airappproject.adapter.BaseRecyclerAdapter;
 import com.manre.airappproject.adapter.BaseRecyclerHolder;
 
@@ -15,22 +17,24 @@ import java.util.List;
  * Created by manre on 21/03/2018.
  */
 
-public class EasyButtonAdapter extends BaseRecyclerAdapter<String> {
+public class EasyButtonAdapter extends BaseRecyclerAdapter<Integer> {
 
-    public void setDataAndContext(Context context, List<String> data)
+
+
+    public EasyButtonAdapter(Context context, List<Integer> data,int replaceLayout)
     {
-         BaseRecyclerAdapter(context,data);
+        BaseRecyclerAdapter(context,data,replaceLayout);
     }
 
-    @NonNull
-    @Override
-    public BaseRecyclerHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        //View v= LayoutInflater.from()
-        return null;
-    }
+
+
 
     @Override
     public void onBindViewHolder(@NonNull BaseRecyclerHolder holder, int position) {
+        int buttonResource= getDataList().get(position);
 
+        ImageView shownButton=holder.findViewById(R.id.easy_button);
+        shownButton.setImageResource(buttonResource);
+        shownButton.set
     }
 }
