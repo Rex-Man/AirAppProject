@@ -35,6 +35,6 @@ public class EasyButtonAdapter extends BaseRecyclerAdapter<Integer> {
 
         ImageView shownButton=holder.findViewById(R.id.easy_button);
         shownButton.setImageResource(buttonResource);
-        shownButton.set
+        
     }
 }
