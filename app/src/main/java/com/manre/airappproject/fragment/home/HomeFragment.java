@@ -20,6 +20,7 @@ import android.widget.Toast;
 import com.manre.airappproject.R;
 import com.manre.airappproject.adapter.easybutton.EasyButtonAdapter;
 import com.manre.airappproject.common.GlideImageLoader;
+import com.manre.airappproject.common.OnItemClickLitener;
 import com.manre.airappproject.fragment.BaseFragment;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -151,6 +152,17 @@ public class HomeFragment extends BaseFragment {
         GridLayoutManager layoutManage = new GridLayoutManager(getContext(), 4);
         mRecyclerView.setLayoutManager(layoutManage);
         EasyButtonAdapter mEasyButtonAdapter=new EasyButtonAdapter(getContext(),getData(),R.layout.item_fragment_home_easybutton);
+        mEasyButtonAdapter.setOnItemClickLitener(new OnItemClickLitener() {
+            @Override
+            public void onItemClick(int position) {
+                Toast.makeText(getActivity(),"您点击了"+position+"行",Toast.LENGTH_SHORT).show();;
+            }
+
+            @Override
+            public void onItemLongClick(int position) {
+                Toast.makeText(getActivity(),"您长按点击了"+position+"行",Toast.LENGTH_SHORT).show();;
+            }
+        });
         mRecyclerView.setAdapter(mEasyButtonAdapter);
 
     }

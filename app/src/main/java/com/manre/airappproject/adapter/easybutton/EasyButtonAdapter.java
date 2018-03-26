@@ -31,6 +31,7 @@ public class EasyButtonAdapter extends BaseRecyclerAdapter<Integer> {
 
     @Override
     public void onBindViewHolder(@NonNull BaseRecyclerHolder holder, int position) {
+        super.onBindViewHolder(holder,position);
         int buttonResource= getDataList().get(position);
 
         ImageView shownButton=holder.findViewById(R.id.easy_button);

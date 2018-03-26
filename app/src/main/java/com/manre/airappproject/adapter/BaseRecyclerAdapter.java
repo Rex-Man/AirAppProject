@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.manre.airappproject.R;
+import com.manre.airappproject.common.OnItemClickLitener;
 
 import java.util.List;
 
@@ -20,6 +21,12 @@ public abstract class  BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseR
     private List<T> mDataList;
     private Context mContext;
     private int replaceLayout;
+    private OnItemClickLitener mOnItemClickLitener;
+
+    public void setOnItemClickLitener(OnItemClickLitener mOnItemClickLitener)
+    {
+        this.mOnItemClickLitener = mOnItemClickLitener;
+    }
 
     public BaseRecyclerAdapter()
     {
@@ -49,7 +56,23 @@ public abstract class  BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseR
     }
 
     @Override
-    public abstract void onBindViewHolder(@NonNull BaseRecyclerHolder holder, int position);
+    public  void onBindViewHolder(@NonNull BaseRecyclerHolder holder, final int position){
+        if( mOnItemClickLitener!= null){
+            holder.itemView.setOnClickListener( new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mOnItemClickLitener.onItemClick(position);
+                }
+            });
+            holder. itemView.setOnLongClickListener( new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    mOnItemClickLitener.onItemLongClick(position);
+                    return false;
+                }
+            });
+        }
+    }
 
 
     @Override
