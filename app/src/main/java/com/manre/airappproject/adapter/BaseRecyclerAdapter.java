@@ -82,6 +82,7 @@ public abstract class  BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseR
     public int getItemCount() {
         return mDataList == null ? 0 : mDataList.size();
     }
+    
     @Override
     public int getItemViewType(int position) {
         if (mMulItemViewType != null) {
