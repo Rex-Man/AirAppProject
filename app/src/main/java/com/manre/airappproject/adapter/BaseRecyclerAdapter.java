@@ -22,6 +22,9 @@ public abstract class  BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseR
     private Context mContext;
     private int replaceLayout;
     private OnItemClickLitener mOnItemClickLitener;
+    IMulItemViewType<T> mMulItemViewType;
+
+
 
     public void setOnItemClickLitener(OnItemClickLitener mOnItemClickLitener)
     {
@@ -78,5 +81,13 @@ public abstract class  BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseR
     @Override
     public int getItemCount() {
         return mDataList == null ? 0 : mDataList.size();
+    }
+    @Override
+    public int getItemViewType(int position) {
+        if (mMulItemViewType != null) {
+            return mMulItemViewType.getItemViewType(position, mDataList.get(position));
+        }else{
+            return super.getItemViewType(position);
+        }
     }
 }
