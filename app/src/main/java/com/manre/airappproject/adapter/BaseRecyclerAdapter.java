@@ -35,11 +35,12 @@ public abstract class  BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseR
     {
 
     }
-    public void BaseRecyclerAdapter(Context context,List<T> mDataList,int replaceLayout)
+    public void BaseRecyclerAdapter(Context context,List<T> mDataList,int replaceLayout,IMulItemViewType<T> mMulItemViewType)
     {
         this.mDataList = mDataList;
         this.mContext = context;
         this.replaceLayout=replaceLayout;
+        this.mMulItemViewType=mMulItemViewType;
     }
 
     public List<T> getDataList() {
@@ -76,6 +77,7 @@ public abstract class  BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseR
             });
         }
     }
+
 
 
     @Override

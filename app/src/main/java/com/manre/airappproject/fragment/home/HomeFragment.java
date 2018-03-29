@@ -60,6 +60,7 @@ public class HomeFragment extends BaseFragment {
         initPicture();
         initSearchTab();
         initEasyButton();
+        initTypeInformation();
         return homeView;
     }
 
@@ -180,6 +181,12 @@ public class HomeFragment extends BaseFragment {
             easyDataList.add(R.drawable.choosesit);
         return easyDataList;
     }
+
+    private void initTypeInformation()
+    {
+
+    }
+
 
     @Override
     public void onStart() {
