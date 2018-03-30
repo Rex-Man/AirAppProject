@@ -9,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,9 +20,11 @@ import android.widget.Toast;
 
 import com.manre.airappproject.R;
 import com.manre.airappproject.adapter.easybutton.EasyButtonAdapter;
+import com.manre.airappproject.adapter.typeinformation.TypeInformationAdapter;
 import com.manre.airappproject.common.GlideImageLoader;
 import com.manre.airappproject.common.OnItemClickLitener;
 import com.manre.airappproject.fragment.BaseFragment;
+import com.manre.airappproject.fragment.home.model.TypeInformation;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -38,6 +41,7 @@ public class HomeFragment extends BaseFragment {
     TabLayout mHomeSearchConditionTab;
     BaseFragment currentFragment;
     RecyclerView mRecyclerView;
+    RecyclerView mRecyclerViewType;
 
     private Fragment homeTabOneWayFragment,homeTabRoundTripFragment;
     private FragmentManager homeSearchManager;
@@ -57,6 +61,7 @@ public class HomeFragment extends BaseFragment {
         banner =homeView.findViewById(R.id.home_advertisement_banner);
         mHomeSearchConditionTab=homeView.findViewById(R.id.home_search_condition_tab);
         mRecyclerView=homeView.findViewById(R.id.home_list_button);
+        mRecyclerViewType= homeView.findViewById(R.id.home_show_case);
         initPicture();
         initSearchTab();
         initEasyButton();
@@ -181,11 +186,29 @@ public class HomeFragment extends BaseFragment {
             easyDataList.add(R.drawable.choosesit);
         return easyDataList;
     }
+    private List<TypeInformation> getTypeInformationData()
+    {
+        List<TypeInformation> easyDataList= new ArrayList<TypeInformation>();
+
+        for (int i=0; i<10;i++) {
+            TypeInformation typeInformation=new TypeInformation();
+            typeInformation.setId(1l);
+            typeInformation.setTitle("Title Test"+1);
+        }
+
+        return easyDataList;
+    }
 
     private void initTypeInformation()
     {
-
+        LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
+        mRecyclerViewType.setLayoutManager(layoutManager);
+        TypeInformationAdapter mTypeInformationAdapter=new TypeInformationAdapter(getContext(),getTypeInformationData(),);
     }
+
+
+
+
 
 
     @Override

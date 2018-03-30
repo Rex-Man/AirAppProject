@@ -54,7 +54,9 @@ public abstract class  BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseR
     @NonNull
     @Override
     public  BaseRecyclerHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
-        View view = LayoutInflater.from(mContext).inflate(replaceLayout,parent,false);
+
+        int mReplaceLayout = mMulItemViewType == null ?replaceLayout : mMulItemViewType.getLayoutId(viewType);
+        View view = LayoutInflater.from(mContext).inflate(mReplaceLayout,parent,false);
         BaseRecyclerHolder holder = BaseRecyclerHolder.get(null,view);
         return holder;
     }

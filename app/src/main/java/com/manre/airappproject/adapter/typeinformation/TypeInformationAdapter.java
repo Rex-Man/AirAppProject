@@ -26,10 +26,13 @@ public class TypeInformationAdapter extends BaseRecyclerAdapter<TypeInformation>
     @Override
     public void onBindViewHolder(@NonNull BaseRecyclerHolder holder, int position) {
         super.onBindViewHolder(holder,position);
+        TypeInformation mtypeInformation= getDataList().get(position);
         int multType=getItemViewType(position);
         switch(multType)
         {
+
             case 0:
+
                 break;
             case 1:
                 break;
