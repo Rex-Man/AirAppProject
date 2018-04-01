@@ -6,8 +6,9 @@ package com.manre.airappproject.fragment.home.model;
 
 public class TypeInformation {
     private Long id;
-    private String imagePath;
-    private String showType;
+    private int imagePath;
+    private int showType;
+    private String title;
 
     public Long getId() {
         return id;
@@ -17,19 +18,19 @@ public class TypeInformation {
         this.id = id;
     }
 
-    public String getImagePath() {
+    public int getImagePath() {
         return imagePath;
     }
 
-    public void setImagePath(String imagePath) {
+    public void setImagePath(int imagePath) {
         this.imagePath = imagePath;
     }
 
-    public String getShowType() {
+    public int getShowType() {
         return showType;
     }
 
-    public void setShowType(String showType) {
+    public void setShowType(int showType) {
         this.showType = showType;
     }
 
@@ -41,7 +42,7 @@ public class TypeInformation {
         this.title = title;
     }
 
-    private String title;
+
 
 
 

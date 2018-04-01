@@ -19,6 +19,7 @@ import android.widget.TableLayout;
 import android.widget.Toast;
 
 import com.manre.airappproject.R;
+import com.manre.airappproject.adapter.IMulItemViewType;
 import com.manre.airappproject.adapter.easybutton.EasyButtonAdapter;
 import com.manre.airappproject.adapter.typeinformation.TypeInformationAdapter;
 import com.manre.airappproject.common.GlideImageLoader;
@@ -192,8 +193,10 @@ public class HomeFragment extends BaseFragment {
 
         for (int i=0; i<10;i++) {
             TypeInformation typeInformation=new TypeInformation();
-            typeInformation.setId(1l);
+            typeInformation.setId(Long.valueOf(i+1));
             typeInformation.setTitle("Title Test"+1);
+            typeInformation.setShowType((i+1)%2);
+            typeInformation.setImagePath(R.drawable.changeticket);
         }
 
         return easyDataList;
@@ -203,7 +206,27 @@ public class HomeFragment extends BaseFragment {
     {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         mRecyclerViewType.setLayoutManager(layoutManager);
-        TypeInformationAdapter mTypeInformationAdapter=new TypeInformationAdapter(getContext(),getTypeInformationData(),);
+        TypeInformationAdapter mTypeInformationAdapter=new TypeInformationAdapter(getContext(), getTypeInformationData(),R.layout.item_fragment_home_information_1 , new IMulItemViewType<TypeInformation>() {
+            @Override
+            public int getItemViewType(int position, TypeInformation typeInformation) {
+                return typeInformation.getShowType();
+            }
+
+            @Override
+            public int getLayoutId(int viewType) {
+
+                switch (viewType)
+                {
+                    case 0:
+                        return R.layout.item_fragment_home_information_1;
+                    case 1:
+                        return R.layout.item_fragment_home_information_2;
+                }
+               return 0;
+            }
+        });
+
+        mRecyclerViewType.setAdapter(mTypeInformationAdapter);
     }
 
 
