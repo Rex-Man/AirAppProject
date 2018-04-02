@@ -5,8 +5,12 @@
     android:layout_height="wrap_content"
        android:orientation="vertical"
        >
+       <TextView
+           android:layout_width="match_parent"
+           android:layout_height="match_parent"
+           android:id="@+id/home_information1_title"/>
        <ImageView
-           android:id="+@"
+           android:id="@+id/home_information1_bigiv"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"/>
        <GridLayout
@@ -15,12 +19,15 @@
            android:orientation="horizontal"
            android:columnCount="3">
            <ImageView
+               android:id="@+id/home_information1_smiv1"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"/>
            <ImageView
+               android:id="@+id/home_information1_smiv2"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"/>
            <ImageView
+               android:id="@+id/home_information1_smiv3"
                android:layout_width="match_parent"
                android:layout_height="wrap_content"/>
        </GridLayout>

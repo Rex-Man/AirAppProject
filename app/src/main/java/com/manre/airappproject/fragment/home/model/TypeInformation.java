@@ -1,14 +1,16 @@
 package com.manre.airappproject.fragment.home.model;
 
+import java.util.List;
+
 /**
  * Created by manlimeng on 2018/3/29.
  */
 
 public class TypeInformation {
     private Long id;
-    private int imagePath;
-    private int showType;
-    private String title;
+    private List<TypeInformationDetail> typeInformationDetails;
+    private int chooseFregment;// 是需要选择哪一个fregment,
+    private String title;//显示的标题是什么
 
     public Long getId() {
         return id;
@@ -18,20 +20,20 @@ public class TypeInformation {
         this.id = id;
     }
 
-    public int getImagePath() {
-        return imagePath;
+    public List<TypeInformationDetail> getTypeInformationDetails() {
+        return typeInformationDetails;
     }
 
-    public void setImagePath(int imagePath) {
-        this.imagePath = imagePath;
+    public void setTypeInformationDetails(List<TypeInformationDetail> typeInformationDetails) {
+        this.typeInformationDetails = typeInformationDetails;
     }
 
-    public int getShowType() {
-        return showType;
+    public int getChooseFregment() {
+        return chooseFregment;
     }
 
-    public void setShowType(int showType) {
-        this.showType = showType;
+    public void setChooseFregment(int chooseFregment) {
+        this.chooseFregment = chooseFregment;
     }
 
     public String getTitle() {
@@ -41,11 +43,4 @@ public class TypeInformation {
     public void setTitle(String title) {
         this.title = title;
     }
-
-
-
-
-
-
-
 }

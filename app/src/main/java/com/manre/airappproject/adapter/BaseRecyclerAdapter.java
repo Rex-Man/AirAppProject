@@ -79,7 +79,9 @@ public abstract class  BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseR
             });
         }
     }
-
+    public Context getContext(){
+        return this.mContext;
+    }
 
 
     @Override

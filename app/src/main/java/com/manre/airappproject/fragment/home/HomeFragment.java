@@ -26,6 +26,7 @@ import com.manre.airappproject.common.GlideImageLoader;
 import com.manre.airappproject.common.OnItemClickLitener;
 import com.manre.airappproject.fragment.BaseFragment;
 import com.manre.airappproject.fragment.home.model.TypeInformation;
+import com.manre.airappproject.fragment.home.model.TypeInformationDetail;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
 import com.youth.banner.Transformer;
@@ -162,12 +163,12 @@ public class HomeFragment extends BaseFragment {
         mEasyButtonAdapter.setOnItemClickLitener(new OnItemClickLitener() {
             @Override
             public void onItemClick(int position) {
-                Toast.makeText(getActivity(),"您点击了"+position+"行",Toast.LENGTH_SHORT).show();;
+                Toast.makeText(getActivity(),"您点击了"+position+"行",Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onItemLongClick(int position) {
-                Toast.makeText(getActivity(),"您长按点击了"+position+"行",Toast.LENGTH_SHORT).show();;
+                Toast.makeText(getActivity(),"您长按点击了"+position+"行",Toast.LENGTH_SHORT).show();
             }
         });
         mRecyclerView.setAdapter(mEasyButtonAdapter);
@@ -190,15 +191,24 @@ public class HomeFragment extends BaseFragment {
     private List<TypeInformation> getTypeInformationData()
     {
         List<TypeInformation> easyDataList= new ArrayList<TypeInformation>();
-
+        List<Integer> typeInformationList  =getData();
         for (int i=0; i<10;i++) {
             TypeInformation typeInformation=new TypeInformation();
             typeInformation.setId(Long.valueOf(i+1));
             typeInformation.setTitle("Title Test"+1);
-            typeInformation.setShowType((i+1)%2);
-            typeInformation.setImagePath(R.drawable.changeticket);
+            typeInformation.setChooseFregment((i+1)%2);
+            List<TypeInformationDetail> typeInformationDetails=new ArrayList<>();
+            for(int j=0;j<4;j++)
+            {
+                TypeInformationDetail typeInformationDetail=new TypeInformationDetail();
+                typeInformationDetail.setId(j+i);
+                typeInformationDetail.setImageDrawableBigId(getData().get(j));
+                typeInformationDetail.setInformationType(i);
+                typeInformationDetails.add(typeInformationDetail);
+            }
+            typeInformation.setTypeInformationDetails(typeInformationDetails);
+            easyDataList.add(typeInformation);
         }
-
         return easyDataList;
     }
 
@@ -209,7 +219,7 @@ public class HomeFragment extends BaseFragment {
         TypeInformationAdapter mTypeInformationAdapter=new TypeInformationAdapter(getContext(), getTypeInformationData(),R.layout.item_fragment_home_information_1 , new IMulItemViewType<TypeInformation>() {
             @Override
             public int getItemViewType(int position, TypeInformation typeInformation) {
-                return typeInformation.getShowType();
+                return typeInformation.getChooseFregment();
             }
 
             @Override
