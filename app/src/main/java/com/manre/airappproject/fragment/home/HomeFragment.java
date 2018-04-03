@@ -196,15 +196,15 @@ public class HomeFragment extends BaseFragment {
         for (int i=0; i<10;i++) {
             TypeInformation typeInformation=new TypeInformation();
             typeInformation.setId(Long.valueOf(i+1));
-            typeInformation.setTitle("Title Test"+1);
-            typeInformation.setChooseFregment((i+1)%2);
+            typeInformation.setTitle("Title Test"+i);
+            typeInformation.setChooseFregment(i%2);
             List<TypeInformationDetail> typeInformationDetails=new ArrayList<>();
             for(int j=0;j<4;j++)
             {
                 TypeInformationDetail typeInformationDetail=new TypeInformationDetail();
                 typeInformationDetail.setId(j+i);
                 typeInformationDetail.setImageDrawableBigId(getData().get(j));
-                typeInformationDetail.setInformationType(i);
+                typeInformationDetail.setInformationType(j);
                 typeInformationDetails.add(typeInformationDetail);
             }
             typeInformation.setTypeInformationDetails(typeInformationDetails);
