@@ -63,7 +63,9 @@ public class HomeFragment extends BaseFragment {
         banner =homeView.findViewById(R.id.home_advertisement_banner);
         mHomeSearchConditionTab=homeView.findViewById(R.id.home_search_condition_tab);
         mRecyclerView=homeView.findViewById(R.id.home_list_button);
+        mRecyclerView.setNestedScrollingEnabled(false);
         mRecyclerViewType= homeView.findViewById(R.id.home_show_case);
+        mRecyclerViewType.setNestedScrollingEnabled(false);
         initPicture();
         initSearchTab();
         initEasyButton();
@@ -191,7 +193,6 @@ public class HomeFragment extends BaseFragment {
     private List<TypeInformation> getTypeInformationData()
     {
         List<TypeInformation> easyDataList= new ArrayList<TypeInformation>();
-        List<Integer> typeInformationList  =getData();
         for (int i=0; i<10;i++) {
             TypeInformation typeInformation=new TypeInformation();
             typeInformation.setId(Long.valueOf(i+1));
