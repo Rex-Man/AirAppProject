@@ -24,9 +24,9 @@ import java.util.List;
 
 public class TypeInformationAdapter extends BaseRecyclerAdapter<TypeInformation> {
 
-    public TypeInformationAdapter (Context context, List<TypeInformation> data, int replaceLayout,IMulItemViewType<TypeInformation> multiItemViewType)
+    public void initTypeInformationAdapter (Context context, List<TypeInformation> data, int replaceLayout,IMulItemViewType<TypeInformation> multiItemViewType)
     {
-        BaseRecyclerAdapter(context,data,replaceLayout,multiItemViewType);
+        initBaseRecyclerAdapter(context,data,replaceLayout,multiItemViewType);
     }
 
     @Override

@@ -31,11 +31,7 @@ public abstract class  BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseR
         this.mOnItemClickLitener = mOnItemClickLitener;
     }
 
-    public BaseRecyclerAdapter()
-    {
-
-    }
-    public void BaseRecyclerAdapter(Context context,List<T> mDataList,int replaceLayout,IMulItemViewType<T> mMulItemViewType)
+    public void initBaseRecyclerAdapter(Context context,List<T> mDataList,int replaceLayout,IMulItemViewType<T> mMulItemViewType)
     {
         this.mDataList = mDataList;
         this.mContext = context;
@@ -91,10 +87,12 @@ public abstract class  BaseRecyclerAdapter<T> extends RecyclerView.Adapter<BaseR
     
     @Override
     public int getItemViewType(int position) {
-        if(mMulItemViewType != null){
-            return mMulItemViewType.getItemViewType(position,mDataList.get(position));
+        int returnType=0;
+        if(mMulItemViewType!= null){
+            returnType=mMulItemViewType.getItemViewType(position,mDataList.get(position));
         }else{
-            return super.getItemViewType(position);
+            returnType=super.getItemViewType(position);
         }
+        return returnType;
     }
 }

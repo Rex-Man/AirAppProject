@@ -68,7 +68,7 @@ public class HomeFragment extends BaseFragment {
         mRecyclerViewType.setNestedScrollingEnabled(false);
         initPicture();
         initSearchTab();
-        initEasyButton();
+        //initEasyButton();
         initTypeInformation();
         return homeView;
     }
@@ -190,6 +190,22 @@ public class HomeFragment extends BaseFragment {
             easyDataList.add(R.drawable.choosesit);
         return easyDataList;
     }
+    private List<Integer> getDataInformation()
+    {
+        List<Integer> easyDataList= new ArrayList<Integer>();
+
+        easyDataList.add(R.drawable.advertisement1);
+        easyDataList.add(R.drawable.advertisement2);
+        easyDataList.add(R.drawable.advertisement3);
+        easyDataList.add(R.drawable.advertisement1);
+        easyDataList.add(R.drawable.advertisement2);
+        easyDataList.add(R.drawable.advertisement3);
+        easyDataList.add(R.drawable.advertisement1);
+        easyDataList.add(R.drawable.advertisement2);
+        easyDataList.add(R.drawable.advertisement1);
+        easyDataList.add(R.drawable.advertisement2);
+        return easyDataList;
+    }
     private List<TypeInformation> getTypeInformationData()
     {
         List<TypeInformation> easyDataList= new ArrayList<TypeInformation>();
@@ -203,7 +219,7 @@ public class HomeFragment extends BaseFragment {
             {
                 TypeInformationDetail typeInformationDetail=new TypeInformationDetail();
                 typeInformationDetail.setId(j+i);
-                typeInformationDetail.setImageDrawableBigId(getData().get(j));
+                typeInformationDetail.setImageDrawableBigId(getDataInformation().get(j));
                 typeInformationDetail.setInformationType(j);
                 typeInformationDetails.add(typeInformationDetail);
             }
@@ -217,7 +233,10 @@ public class HomeFragment extends BaseFragment {
     {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         mRecyclerViewType.setLayoutManager(layoutManager);
-        TypeInformationAdapter mTypeInformationAdapter=new TypeInformationAdapter(getContext(), getTypeInformationData(),R.layout.item_fragment_home_information_1 , new IMulItemViewType<TypeInformation>() {
+
+        TypeInformationAdapter mTypeInformationAdapter=new TypeInformationAdapter();
+
+        mTypeInformationAdapter.initTypeInformationAdapter(getContext(), getTypeInformationData(),54 , new IMulItemViewType<TypeInformation>() {
             @Override
             public int getItemViewType(int position, TypeInformation typeInformation) {
                 return typeInformation.getChooseFregment();
@@ -226,14 +245,18 @@ public class HomeFragment extends BaseFragment {
             @Override
             public int getLayoutId(int viewType) {
 
+                int selectView=viewType;
                 switch (viewType)
                 {
                     case 0:
-                        return R.layout.item_fragment_home_information_1;
+                        selectView= R.layout.item_fragment_home_information_1;
+                        break;
                     case 1:
-                        return R.layout.item_fragment_home_information_2;
+                        selectView= R.layout.item_fragment_home_information_2;
+                        break;
                 }
-               return 0;
+                return selectView;
+
             }
         });
 

@@ -23,7 +23,7 @@ public class EasyButtonAdapter extends BaseRecyclerAdapter<Integer> {
 
     public EasyButtonAdapter(Context context, List<Integer> data,int replaceLayout)
     {
-        BaseRecyclerAdapter(context,data,replaceLayout,null);
+        initBaseRecyclerAdapter(context,data,replaceLayout,null);
     }
 
 
