@@ -194,16 +194,16 @@ public class HomeFragment extends BaseFragment {
     {
         List<Integer> easyDataList= new ArrayList<Integer>();
 
-        easyDataList.add(R.drawable.advertisement1);
-        easyDataList.add(R.drawable.advertisement2);
-        easyDataList.add(R.drawable.advertisement3);
-        easyDataList.add(R.drawable.advertisement1);
-        easyDataList.add(R.drawable.advertisement2);
-        easyDataList.add(R.drawable.advertisement3);
-        easyDataList.add(R.drawable.advertisement1);
-        easyDataList.add(R.drawable.advertisement2);
-        easyDataList.add(R.drawable.advertisement1);
-        easyDataList.add(R.drawable.advertisement2);
+        easyDataList.add(R.drawable.type_info_1);
+        easyDataList.add(R.drawable.type_info_2);
+        easyDataList.add(R.drawable.type_info_3);
+        easyDataList.add(R.drawable.type_info_1);
+        easyDataList.add(R.drawable.type_info_2);
+        easyDataList.add(R.drawable.type_info_3);
+        easyDataList.add(R.drawable.type_info_1);
+        easyDataList.add(R.drawable.type_info_2);
+        easyDataList.add(R.drawable.type_info_3);
+        easyDataList.add(R.drawable.type_info_1);
         return easyDataList;
     }
     private List<TypeInformation> getTypeInformationData()
